@@ -21,11 +21,11 @@
     <form action='/adicator' method="post">
 
         {{ csrf_field()}}  <!--Variavel obrigatória do Laravel-->
-        Nome &nbsp&nbsp&nbsp&nbsp&nbsp: <input type= 'text' name='first_name'>
+        Nome &nbsp&nbsp&nbsp&nbsp&nbsp: <input type= 'text' name='first_name' value="{{old('first_name')}}">
         <br>
-        Sobrenome : <input type= 'text' name='last_name'>
+        Sobrenome : <input type= 'text' name='last_name'  value="{{old('last_name')}}">
         <br>
-        Avaliacao &nbsp&nbsp : <input type= 'text' name='rating'>
+        Avaliacao &nbsp&nbsp : <input type= 'text' name='rating'  value="{{old('rating')}}">
 
         <button type='submit' name='enviar'>enviar</button>
     </form>

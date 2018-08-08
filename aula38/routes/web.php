@@ -22,8 +22,14 @@ Route::get('/formatores',function(){  //abre o formulario de inclusão dos dados
   return view('fatores');
 });
 
-Route::get('/form','Formcontroller@formulario');//abre o formulario de inclusão dos dados passando pelo controller
+Route::get('/adicionar','Formcontroller@formulario');//abre o formulario de inclusão dos dados passando pelo controller
 
 Route::post('/adicionar','Formcontroller@adicionar');  //chama a validação dos dados preenchidos
+
+Route::get('/exibefilmes','Formcontroller@exibirfilmes');
+
+Route::get('/editafilme/{id}','Formcontroller@editafilme');
+
+Route::delete('/deletafilme/{id}','Formcontroller@deletafilme');
 
 Route::post('/adicator','AtorController@adicionar');  //chama a validação dos dados preenchidos
