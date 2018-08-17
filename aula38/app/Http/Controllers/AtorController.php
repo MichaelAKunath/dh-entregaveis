@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\atores;
+
 class AtorController extends Controller
 {
   public function fatores() {
@@ -21,6 +23,18 @@ class AtorController extends Controller
     ]);
 
     return view('fatores');
+  }
+
+  public function exibeatores()
+  {
+    $atores = Atores::all();
+    return view('todosatores')->with('atores',$atores);
+  }
+
+  public function editaator($id)
+  {
+    $ator = Atores::find($id);
+    return view('editator')->with('ator',$ator);
   }
     //
 }

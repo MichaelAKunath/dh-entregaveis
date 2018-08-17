@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Formulario de edição de filmes</title>
+    <title>Formulario de inclusão filmes</title>
   </head>
   <body>
     @if (count($errors) > 0) <!--Controle de mensagens de erro -->
@@ -29,7 +29,7 @@
         {{ csrf_field()}}  <!--Variavel obrigatória do Laravel gera um token de segurança-->
         <div class="form-group col-6 m-auto">
           <label>Nome</label>
-          <input type= 'text' class="form-control" name='title' value="{{$filme->title)}}">
+          <input type= 'text' class="form-control" name='title' value="{{old('title')}}">
         </div>
         <div class="form-group col-6 m-auto">
           <label>Avaliacao</label>
@@ -46,10 +46,19 @@
         <div class="form-group col-6 m-auto">
             <label>Data de estreia</label>
             <input type="date" class="form-control" name="release_date" value="{{old('release_date')}}"
-            </div>
-            <div class="form-group col-6 m-auto">
-              <button type='submit' name='enviar'>enviar</button>
-            </div>
+        </div>
+        <div class="form-group col-6 m-auto">
+            <label>Genero</label>
+            <select  class="form-control" name="genre_id">
+               @foreach ($genres as $genre)
+                <option value = {{$genre->id}} >{{$genre->name}} </option>
+               @endforeach
+            </select>
+        </div>
+        <br>
+        <div class="form-group col-6 m-auto">
+            <button type='submit' name='enviar'>enviar</button>
+        </div>
     </form>
   </body>
 </html>

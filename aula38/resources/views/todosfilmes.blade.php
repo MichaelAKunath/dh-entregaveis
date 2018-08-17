@@ -7,7 +7,10 @@
   <body>
 
     @foreach($filmes as $filme)
-       {{$filme->title}} <a href ="">editar</a>
+        {{$filme->id}}&nbsp
+       {{$filme->title}}
+       <a href ="/editafilme/{{$filme->id}}">editar</a>
+       <a href ="/deletafilme/{{$filme->id}}">deleta</a>
         <br>
     @endforeach
   </body>

@@ -30,6 +30,14 @@ Route::get('/exibefilmes','Formcontroller@exibirfilmes');
 
 Route::get('/editafilme/{id}','Formcontroller@editafilme');
 
-Route::delete('/deletafilme/{id}','Formcontroller@deletafilme');
+Route::post('/editafilme/{id}','Formcontroller@gravafilme');
+
+Route::get('/deletafilme/{id}','Formcontroller@deletafilme');
 
 Route::post('/adicator','AtorController@adicionar');  //chama a validação dos dados preenchidos
+
+Route::get('/exibeatores','AtorController@exibeatores');
+
+Route::get('/editaator/{id}','Formcontroller@editaator');
+
+Route::post('/editaator/{id}','Formcontroller@gravaator');

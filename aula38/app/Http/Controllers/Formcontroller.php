@@ -46,18 +46,40 @@ class Formcontroller extends Controller
       return view('todosfilmes')->with('filmes',$filmes);
     }
 
-    public function editafilme(id $id)
+    public function editafilme($id)
     {
       $filme = Filmes::find($id);
-      $filme->show();
+
+      return view('editafilme')->with('filme',$filme);
+    }
+
+    public function gravafilme(Request $request,$id)
+    { $request->validate([
+      'title' => 'required',
+      'release_date'=>'required'
+    ]);
+
+      $filme = Filmes::find($id);
+      $filme->title = $request->input('title');
+      $filme->rating = $request->input('rating');
+      $filme->awards = $request->input('awards');
+      $filme->length = $request->input('length');
+      $filme->release_date = $request->input('release_date');
+
+      $sucesso = $filme->save();
+
       return view('editafilme')->with('filme',$filme);
     }
 
 
-    public function deletafilme(id $id)
+    public function deletafilme($id)
     {
       $filme = Filmes::find($id);
+      
       $filme->delete();
-      return 'Filme deletado com sucesso !';
+
+      return redirect('/exibefilmes');
     }
+
+
   }
