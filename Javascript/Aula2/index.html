@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Aula2</title>
+  </head>
+  <body>
+    <h2>Pagina teste</h2>
+    <script>
+        alert("Página carregando");
+        window.onload = function(){
+          alert("Página carregada");
+        };
+        let nome = prompt("Qual é o seu nome ? ");
+
+        alert("Bem vindo " + nome);
+        let maior = confirm("Você é maior de idade ?");
+
+        if (maior === false){
+          window.location = "http://www.disney.com.br";
+        }
+        let endereco = window.location.href;
+        console.log(endereco);
+
+    </script>
+  </body>
+</html>

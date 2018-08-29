@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Movie;
+use App\Actor;
 
 class MovieSeeder extends Seeder
 {

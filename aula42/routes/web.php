@@ -22,13 +22,15 @@ Route::get('/formatores',function(){  //abre o formulario de inclusão dos dados
   return view('fatores');
 });
 
+Route::get('/exibefilmes','Formcontroller@exibirfilmes')
+
+Route::middleware('auth')->group(function(){
+
 Route::get('/adicionar','Formcontroller@formulario');//abre o formulario de inclusão dos dados passando pelo controller
 
-Route::post('/adicionar','Formcontroller@adicionar');  //chama a validação dos dados preenchidos
+Route::post('/adicionar','Formcontroller@adicionar');  //chama a validação dos dados preenchido
 
-Route::get('/exibefilmes','Formcontroller@exibirfilmes');
-
-Route::get('/editafilme/{id}','Formcontroller@editafilme');
+Route::get('/editafilme/{id}','Formcontroller@editafilme')->midleware('auth');  //permite apenas para usuario logado
 
 Route::post('/editafilme/{id}','Formcontroller@gravafilme');
 
@@ -49,3 +51,5 @@ Route::get('/mostragenre/{id}','genreController@mostragenre');
 Route::get('/editagenre/{id}','genreController@editagenre');
 
 Route::post('/editagenre/{id}','genreController@editagenre');
+
+});
