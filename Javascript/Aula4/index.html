@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <style>
+    #quadrado {
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+    </style>
+
+    <div id="quadrado"></div>
+
+    <script>
+      quadrado.style.position = 'absolute'
+      quadrado.style.left = 0
+
+      document.onkeydown = function (event) {
+      //right
+      if(event.keyCode === 39) {
+        quadrado.style.left = parseInt(quadrado.style.left) + 10
+      }
+      if(event.keyCode === 37) {
+        quadrado.style.left = parseInt(quadrado.style.left) - 10
+      }
+    }
+    </script>
+    <!--
+      <form id="form" action="/SalvarDados" method="post">
+      <input id="inputAtor" type "text" name="ator" />
+      <input id="inputIdade" type "text" name="idade" />
+      <button type="submit">Salvar</button>
+    </form>
+    <script>
+
+    </script>
+    -->
+  </body>
+</html>

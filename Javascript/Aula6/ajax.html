@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <select name='paises' id='selectPaises'></select>
+
+    <select name='unidades' id='selectUnidades'></select>
+    <script>
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        //console.log(xmlhttp.responseText);
+        let paises = (JSON.parse(xmlhttp.responseText));
+        //console.log(paises)
+        let paisesEmArray = Object.entries(paises.contenido)
+        console.log(paisesEmArray)
+        let paisesesc=''
+        paisesEmArray.forEach(function (item) {
+           let pais = item[0]
+           let id   = item[1]
+           paisesesc += '<option value'+id+'>'+pais+'</option>'
+        })
+        document.querySelector('#selectPaises').innerHTML = paisesesc
+        //Meu código
+      } };
+      xmlhttp.open("GET", "http://pilote.techo.org/?do=api.getPaises", true);
+      xmlhttp.send();
+
+    </script>
+  </body>
+</html>

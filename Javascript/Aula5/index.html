@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+     <form id='form1' action='none'>
+       nome :<input type="text" name = 'nome' >
+       <br>
+       email :<input type="email" name = 'email'>
+       <br>
+       <box width='100px'>
+       senha          :</box><input type="password" name = 'senha'>
+       <br>
+       Confirme senha :<input type="password" name = 'senhac'>
+       <br>
+
+       <label>
+        <input type = 'radio' name='sexo' value = 'm'>masculino
+        <input type = 'radio' name='sexo' value = 'f'>feminino
+      </label>
+      <br>
+        <input type = 'checkbox' name='noticias' value = 's'>Deseja receber noticias
+      <p id="mensagem"><p>
+      <button type = "submit">confirma</button>
+      <button id = "limpar" type = "button">Limpar</button>
+      <button id = "ocultar" type = "button">Ocultar</button>
+     </form>
+     <script>
+        form1.onsubmit = function (event) {
+          event.preventDefault()
+          let msgFinal = ''
+          let nome = this['nome'].value
+          let email = this['email'].value
+          let senha = this['senha'].value
+          let senhac = this['senhac'].value
+          let sexo = this['sexo'].value
+          let noticias = this['noticias'].value
+
+          if (!nome) {
+            msgFinal = msgFinal + 'Preencha o campo nome<br>'
+          }
+          if (!email) {
+            msgFinal = msgFinal + 'Preencha o campo email<br>'
+          }
+          if (!senha) {
+            msgFinal = msgFinal + 'Preencha o campo senha<br>'
+          }
+          if (!sexo ){
+            msgFinal = msgFinal + 'Escolha um sexo<br>'
+          }
+          if (senhac != senha) {
+            msgFinal = msgFinal + 'Senhas não coincidem !'
+          }
+            msgFinal = msgFinal + ' ' + noticias
+          mensagem.innerHTML = msgFinal
+        }
+        limpar.onclick = function(event) {
+                  form1.nome.value = '' //nome
+          //document.forms[0].elements[0].value = '' //nome
+          document.forms[0].elements[1].value = '' //email
+          document.forms[0].elements[2].value = '' //senha
+          document.forms[0].elements[3].value = '' //senhac
+          document.forms[0].elements[4].checked = 0  //Sexo masculino
+          document.forms[0].elements[5].checked = 0  //Sexo feminino
+          document.forms[0].elements[6].checked = 0  //Noticias
+          //this['nome'].value = ''
+        }
+        ocultar.onclick = function(event) {
+          document.forms[0].style.display = 'none'  //se for propriedade CSS 
+        }
+     </script>
+  </body>
+</html>

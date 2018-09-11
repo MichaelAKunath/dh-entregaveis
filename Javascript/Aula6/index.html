@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form>
+    nome <input type = "text" id = nome>
+    idade <input type = "int" id = idade>
+  </form>
+    <script>
+    let nome  = document.forms[0].nome
+    let idade = document.forms[0].idade
+    console.log(nome)
+    nome.onmouseover = function(){nome.style.background = 'red'}
+    idade.onmouseover = function(){idade.style.background = 'green'}
+    //let​ objetoEmFormatoJSON ​=​ ​'​{​ ​"atributo"​:​ ​"valor"​,​ ​"atributo1"​:​ ​1​,​ ​"atributo2"​:​ ​[], "atributo3"​:​null​,​ ​"atributo4"​:​ ​false​ ​}'​;
+    let respostaDaAPI = '{"propriedade1":"banana"}'  //Em Json
+
+    //let obj = {propriedade1,"banana"}   //Em objeto
+
+    let amigos = '{"2":["Caio","maria"],"4":["Mauro","Juliana","Auro","Jafet"]}'
+    let objamigos = JSON.parse(amigos)
+    console.log(objamigos)
+    console.log(objamigos[2])
+    console.log(objamigos[2][0])
+
+    let objetoAPI = '{"amigos":[{"2":["Caio","maria"],"4":["Mauro","Juliana","Auro","Jafet"]},{"2":["Livia","Ana"],"3":["Michael","Anita","Lara"]}]}'
+
+    let objeto = JSON.parse(objetoAPI)
+    console.log(objeto.amigos[0][4][0])
+    console.log(objeto.amigos[1][3][1])
+
+    let objetoExercicio1 = JSON.parse(respostaDaAPI) //Transforma em objeto
+
+    let enviarEssesDados = {
+      nome: document.querySelector('#nome').value,
+      idade: document.querySelector('#idade').value,
+    }  //é um objeto
+
+    let objetoExercicio1String = JSON.stringify(objetoExercicio1) //Transforma em string
+    //console.log(objetoExercicio1)
+
+    let xmlhttp = new XMLHttpRequest();
+
+       xmlhttp.onreadystatechange = function () {
+         if(xmlhttp.readyState == 4 && xmlhttp.status == 200 ){
+           //console.log(xmlhttp.responseText);
+         }
+       };
+
+       xmlhttp.open("POST" , "http://pilote.techo.org/admin/?do=api.getPaises", true);
+       xmlhttp.send(JSON.stringify(enviarEssesDados))
+    </script>
+  </body>
+</html>

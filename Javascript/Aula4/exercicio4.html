@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form id="form" action = ""/>
+      <button id="cumprimentar">Cumprimentar</button>
+      <br>
+      <button id="alterarFundo">Alterar Fundo</button>
+  </form>
+  <img id="imagem" src="DSC_0296.JPG" width = 200px height=200px />
+  <p id="mensimg"></p>
+  <form id="redireciona" action = "http:\\www.google.com" />
+    <p>idade :<input id="idade" type="int" name="idade"/></p>
+    <button id="confirma" type="submit">Google</button>
+  </form>
+  <p id="erro"></P>
+  <script>
+      let mensimg = document.getElementById("mensimg")
+      cumprimentar.onclick = function() {alert("olá");}
+      alterarFundo.onclick = function() {document.body.style.background = "green"}
+      imagem.onmouseover = function()   {mensimg.innerHTML = "estou sobre a imagem"}
+      imagem.onmouseout = function()   {mensimg.innerHTML = ""}
+      imagem.onclick = function()   {mensimg.innerHTML = "estou clicando na imagem"}
+      //document.body.onclick = function() {this.style.background = "red"}
+      function redbody() {this.style.background = "red";}
+      document.body.addEventListener('click', redbody);
+      document.body.removeEventListener("click",redbody)
+      redireciona.onsubmit = function(event) {
+        event.preventDefault();
+        let mensagem = ""
+        if(idade.value < 18) {mensagem = "<b> Não autorizado</b>"}
+        if(!mensagem){window.location="https://www.google.com.br/"} else
+        {erro.innerHTML = mensagem}
+
+        }
+        document.body.addEventListener('mouseover', function(event) {
+          console.log("x"+event.clientX);
+          console.log("y"+event.clientY);
+        })
+        let tempo = setTimeout(function(){ alert("Você está a 10s"); }, 10000);
+        
+        let intervalo = setInterval(function(){ alert("Passaram 8s"); }, 8000);
+        setTimeout(function(){clearTimeout(tempo);clearTimeout(intervalo);},15000);
+      //}
+    </script>
+  </body>
+</html>
